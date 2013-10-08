@@ -1,0 +1,42 @@
+body {
+  font-size: .95em; }
+
+.container-fluid {
+  width: 800px;
+  background-color: #fff;
+  margin: 20px auto;
+  border: 1px solid #eaeaea;
+  padding-top: 15px; }
+
+ol {
+  padding-bottom: 30px; }
+  ol ol {
+    padding-bottom: 0;
+    list-style-type: upper-roman; }
+
+.choose-version {
+  margin: 20px 10px; }
+
+.install-steps li, .uninstall-steps li {
+  margin-top: 8px; }
+
+.folder-name {
+  font-size: .85em; }
+
+textarea {
+  width: 750px;
+  margin-top: 15px;
+  height: 55px;
+  overflow: scroll;
+  font-size: .60em;
+  background-color: #ececec; }
+
+#uninstall {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.heading {
+  background-color: #cccbbb;
+  padding-left: 10px;
+  border-bottom: 2px solid #666;
+  margin-bottom: 5px; }
