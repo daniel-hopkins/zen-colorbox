@@ -24,7 +24,7 @@ function resizeColorBox() {
   if (resizeTimer) clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function() {
     if (jQuery('#cboxOverlay').is(':visible')) {
-      jQuery.colorbox.load(true);
+      jQuery.colorbox.resize({width:'90%', height:'90%'});
     }
   }, 300);
 }
