@@ -11,9 +11,7 @@
 ?>
 jQuery(function($) {
 	$("a[rel^='colorbox']").colorbox({<?php require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/options.php'); ?>});;
-	/*var imageLink = $("a[rel^='colorbox']");
-	if (imageLink.hasClass('nofollow')){
-		imageLink.attr('rel','colorbox-' + <?php echo rand(10, 99);?>);
-	}*/
+  // Disable Colobox on main reviews page image
+  $("#productMainImageReview a").removeAttr("rel");
 });
 //--></script>
