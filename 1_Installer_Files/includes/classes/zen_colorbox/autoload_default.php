@@ -14,23 +14,4 @@ jQuery(function($) {
   // Disable Colobox on main reviews page image
   $("#productMainImageReview a").removeAttr("rel");
 });
-// Begin Make ColorBox responsive
-jQuery.colorbox.settings.maxWidth  = '95%';
-jQuery.colorbox.settings.maxHeight = '95%';
-
-// ColorBox resize function
-var resizeTimer;
-function resizeColorBox() {
-  if (resizeTimer) clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(function() {
-    if (jQuery('#cboxOverlay').is(':visible')) {
-      jQuery.colorbox.resize({width:'90%', height:'90%'});
-    }
-  }, 300);
-}
-
-// Resize ColorBox when resizing window or changing mobile device orientation
-jQuery(window).resize(resizeColorBox);
-window.addEventListener("orientationchange", resizeColorBox, false);
-// End Make ColorBox responsive
 //--></script>
