@@ -3,7 +3,7 @@ $(document).ready(function(){
     $('.one-point-five, .one-point-three, .install-steps, .uninstall-one-point-five, .uninstall-one-point-three, .uninstall-steps').hide();  
 
     $('.btn-dismiss-warning').on('click', function(){
-      $('.backup-warning').fadeOut();
+      $(this).closest('.backup-warning').fadeOut();
     });
     
     $('.btn-one-point-five, .btn-one-point-three').on('click', function(){
