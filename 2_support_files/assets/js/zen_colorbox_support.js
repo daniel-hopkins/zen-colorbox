@@ -1,16 +1,16 @@
 $(document).ready(function(){
 
-    $('.one-point-five, .one-point-three, .install-steps, .uninstall-one-point-five, .uninstall-one-point-three, .uninstall-steps').hide();  
+    $('.one-point-five, .one-point-three, .install-steps, .uninstall-one-point-five, .uninstall-one-point-three, .uninstall-steps').hide();
 
     $('.btn-dismiss-warning').on('click', function(){
-      $('.backup-warning').fadeOut();
+      $(this).closest('.backup-warning').fadeOut();
     });
-    
+
     $('.btn-one-point-five, .btn-one-point-three').on('click', function(){
       $('.install-steps').show();
       $(this).closest('.row-fluid').hide();
     });
-    
+
     $('.btn-one-point-five').on('click', function(){
       $('.one-point-five').show();
     });
@@ -30,20 +30,17 @@ $(document).ready(function(){
     });
 
     $('a#copy-install-sql-one-point-five').on('click', function(){
-      $('#install-sql-one-point-five').select()
+      $('#install-sql-one-point-five').addClass('textarea-selected').select()
     });
     $('a#copy-install-sql-one-point-three').on('click', function(){
-      $('#install-sql-one-point-three').select()
+      $('#install-sql-one-point-three').addClass('textarea-selected').select()
     });
 
     $('a#copy-uninstall-sql-one-point-five').on('click', function(){
-      $('#uninstall-sql-one-point-five').select()
+      $('#uninstall-sql-one-point-five').addClass('textarea-selected').select()
     });
     $('a#copy-uninstall-sql-one-point-three').on('click', function(){
-      $('#uninstall-sql-one-point-three').select()
+      $('#uninstall-sql-one-point-three').addClass('textarea-selected').select()
     });
-
-    
-    
 
 });

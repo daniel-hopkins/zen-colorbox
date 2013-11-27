@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!doctype html>
+<!-- saved from url=(0016)http://localhost -->
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
@@ -51,16 +52,38 @@
           <span class='one-point-five'>- 1.5</span>
           <span class='one-point-three'>- 1.3.9</span>
         </h3>
-        <div class='alert alert-error backup-warning'>
+        <div class='alert alert-danger backup-warning'>
           <h3>BACKUP</h3>
-          <p>Be sure to make a backup of your <strong>database</strong> and you <strong>site files</strong> before you continue! <br> We even recommend trying this in a test store first.</p>
-          <a class='btn btn-mini btn-danger' href='http://www.zen-cart.com/content.php?144-how-can-i-do-a-database-backup-with-phpmyadmin' target='_blank'>How?</a>
-          <button class='btn btn-mini btn-danger btn-dismiss-warning'>Dismiss</button>
+          <p>Be sure to make a backup of your <strong>database</strong> and you <strong>site files</strong> before you continue! <br> The <strong>BEST</strong> recommendation is to do this on a development version of your site. If you are serious about running your store it is always worth having a second version of the store so that you can experiment on that first. I know that this seems like a lot of work but it really is worth it and does not actually take that much time. <br>
+          <a class='btn btn-xs btn-danger' href='http://www.zen-cart.com/content.php?144-how-can-i-do-a-database-backup-with-phpmyadmin' target='_blank'>How?</a>
+          <button class='btn btn-xs btn-danger btn-dismiss-warning'>Dismiss</button>
+        </div>
+        <div class="alert alert-danger backup-warning">
+          <h3>BEFORE YOU INSTALL READ THIS!!!</h3>
+          <p>Some files that Zen-Colorbox modifies are core files. This means that Zen-Colorbox overwrites the existing files that Zen Cart uses. If your site has no modifications to these files then there are no problems. If your installation has existing modifications to you files then you will have to carefully merge the existing modifications with the modifications that Zen-Colorbox makes.</p>
+
+
+
+          <h2>Best Practice</h2>
+
+          <div class="boldemphasis">This is the way to go if you know that you have merges to do.</div>
+
+          <p>Read the installation instructions and see which Zen-Colorbox files are equivilant to which Zen Cart files. It is not a <strong>complex pattern!</strong> Then merge your modifications into the appropriate file in the Zen-Colorbox installation files.</p>
+
+          <p>For instance if you have existing modifications in<br>
+
+            YOUR_TEMPLATE/templates/tpl_modules_main_product_image.php<br><br>
+
+            merge them with the installation file<br>
+
+            Then install as normal.</p>
+            <a class='btn btn-xs btn-danger' href='http://www.zen-cart.com/content.php?228-understanding-the-override-system' target='_blank'>How?</a>
+          <button class='btn btn-xs btn-danger btn-dismiss-warning'>Dismiss</button>
         </div>
         <div class='row-fluid choose-version'>
-          Choose your version:
-          <button class='btn btn-small btn-primary btn-one-point-five'><strong>Zen Cart 1.5</strong></button>
-          <button class='btn btn-small btn-primary btn-one-point-three'><strong>Zen Cart 1.3.9</strong></button>
+          To view the instructions, please choose your version of ZenCart by clicking the appropriate button:<br>
+          <button class='btn btn-sm btn-primary btn-one-point-five'><strong>Zen Cart 1.5</strong></button>
+          <button class='btn btn-sm btn-primary btn-one-point-three'><strong>Zen Cart 1.3.9</strong></button>
         </div>
         <ol class='install-steps'>
           <li>
@@ -77,7 +100,7 @@
             </ul>
           </li>
           <li class='one-point-three'>
-            <div class="alert">
+            <div class="alert alert-info">
               You can safely ignore or delete the following folder (it is only used for Zen Cart 1.5)
               <ul>
                 <li>1_Installer_Files/<strong class='folder-name'>YOUR_ADMIN</strong></li>
@@ -86,55 +109,56 @@
           </li>
           <li>Using your FTP program; upload the <strong>includes</strong> <span class="one-point-five hide">and the (renamed) <strong>admin</strong></span> folder to your server (Note: All files make use of the overrides system, and should <strong>merge</strong> with your current files <strong>not</strong> replace.)</li>
           <li class='one-point-three'>
-            <a class='btn btn-mini btn-success' id='copy-install-sql-one-point-three'>Press this button</a>
+          <!-- TODO hilight this box for more attention -->
+            <a class='btn btn-xs btn-success' id='copy-install-sql-one-point-three'>Press this button</a>
             to select the install sql.
           </li>
           <li class='one-point-five'>
-            <a class='btn btn-mini btn-success' id='copy-install-sql-one-point-five'>Press this button</a>
+            <a class='btn btn-xs btn-success' id='copy-install-sql-one-point-five'>Press this button</a>
             to select the install sql.
           </li>
           <textarea class='one-point-three' id='install-sql-one-point-three' readonly='readonly'>INSERT INTO `configuration_group` VALUES (NULL, 'Zen Colorbox', 'Configure Zen Colorbox settings', '0', '1');
           UPDATE `configuration_group` SET `sort_order` = LAST_INSERT_ID() WHERE `configuration_group_id` = LAST_INSERT_ID();
           SELECT @cgi := `configuration_group_id` FROM `configuration_group` WHERE `configuration_group_title` = 'Zen Colorbox';
           INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-          (NULL, '&lt;b&gt;Zen Colorbox&lt;/b&gt;', 'ZEN_COLORBOX_STATUS', 'true', '&lt;br /&gt;If true, all product images on the following pages will be displayed within a lightbox:&lt;br /&gt;&lt;br /&gt;- document_general_info&lt;br /&gt;- document_product_info&lt;br /&gt;- page (EZ-Pages)&lt;br /&gt;- product_free_shipping_info&lt;br /&gt;- product_info&lt;br /&gt;- product_music_info&lt;br /&gt;- product_reviews&lt;br /&gt;- product_reviews_info&lt;br /&gt;- product_reviews_write&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 100, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, 'Overlay Opacity', 'ZEN_COLORBOX_OVERLAY_OPACITY', '0.6', '&lt;br /&gt;Controls the transparency of the overlay.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 0.6&lt;/b&gt;', @cgi, 101, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''0'', ''0.1'', ''0.2'', ''0.3'', ''0.4'', ''0.5'', ''0.6'', ''0.7'', ''0.8'', ''0.9'', ''1''), '),
-          (NULL, 'Resize Duration', 'ZEN_COLORBOX_RESIZE_DURATION', '400', '&lt;br /&gt;Controls the speed of the image resizing.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 400&lt;/b&gt;&lt;br /&gt;', @cgi, 102, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Initial Width', 'ZEN_COLORBOX_INITIAL_WIDTH', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its width from this value to the current image width, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 250&lt;/b&gt;&lt;br /&gt;', @cgi, 103, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Initial Height', 'ZEN_COLORBOX_INITIAL_HEIGHT', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its height from this value to the current image height, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 250&lt;/b&gt;&lt;br /&gt;', @cgi, 104, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Display Image Counter', 'ZEN_COLORBOX_COUNTER', 'true', '&lt;br /&gt;If true, the image counter will be displayed (below the caption of each image) within the lightbox.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 105, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, 'Close on Overlay Click', 'ZEN_COLORBOX_CLOSE_OVERLAY', 'false', '&lt;br /&gt;If true, the lightbox will close when the overlay is clicked.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: false&lt;/b&gt;', @cgi, 106, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, 'Loop', 'ZEN_COLORBOX_LOOP', 'true', '&lt;br /&gt;If true, Images will loop in both directions.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 107, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&lt;b&gt;Slideshow&lt;/b&gt;', 'ZEN_COLORBOX_SLIDESHOW', 'false', '&lt;br /&gt;If true, Images will display as a slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: false&lt;/b&gt;', @cgi, 200, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&nbsp; Slideshow Auto Start', 'ZEN_COLORBOX_SLIDESHOW_AUTO', 'true', '&lt;br /&gt;If true, your slideshow will auto start.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 201, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&nbsp; Slideshow Speed', 'ZEN_COLORBOX_SLIDESHOW_SPEED', '2500', '&lt;br /&gt;Sets the speed of the slideshow &lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 2500&lt;/b&gt;', @cgi, 202, NOW(), NOW(), NULL, NULL),
-          (NULL, '&nbsp; Slideshow Start Text', 'ZEN_COLORBOX_SLIDESHOW_START_TEXT', 'start slideshow', '&lt;br /&gt;Link text to start the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: start slideshow&lt;/b&gt;', @cgi, 203, NOW(), NOW(), NULL, NULL),
-          (NULL, '&nbsp; Slideshow Stop Text', 'ZEN_COLORBOX_SLIDESHOW_STOP_TEXT', 'stop slideshow', '&lt;br /&gt;Link text to stop the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: stop slideshow&lt;/b&gt;', @cgi, 204, NOW(), NOW(), NULL, NULL),
-          (NULL, '&lt;b&gt;Gallery Mode&lt;/b&gt;', 'ZEN_COLORBOX_GALLERY_MODE', 'true', '&lt;br /&gt;If true, the lightbox will allow additional images to quickly be displayed using previous and next buttons.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 300, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&nbsp; Include Main Image in Gallery', 'ZEN_COLORBOX_GALLERY_MAIN_IMAGE', 'true', '&lt;br /&gt;If true, the main product image will be included in the lightbox gallery.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 301, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&lt;b&gt;EZ-Pages Support&lt;/b&gt;', 'ZEN_COLORBOX_EZPAGES', 'true', '&lt;br /&gt;If true, the lightbox effect will be used for linked images on all EZ-Pages.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 400, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&nbsp; File Types', 'ZEN_COLORBOX_FILE_TYPES', 'jpg,png,gif', '&lt;br /&gt;On EZ-Pages, the lightbox effect will be applied to all images with one of the following file types.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: jpg,png,gif&lt;/b&gt;&lt;br /&gt;', @cgi, 401, NOW(), NOW(), NULL, NULL);</textarea>
+          (NULL, '&lt;strong&gt;Zen Colorbox&lt;/strong&gt;', 'ZEN_COLORBOX_STATUS', 'true', '&lt;br /&gt;If true, all product images on the following pages will be displayed within a lightbox:&lt;br /&gt;&lt;br /&gt;- document_general_info&lt;br /&gt;- document_product_info&lt;br /&gt;- page (EZ-Pages)&lt;br /&gt;- product_free_shipping_info&lt;br /&gt;- product_info&lt;br /&gt;- product_music_info&lt;br /&gt;- product_reviews&lt;br /&gt;- product_reviews_info&lt;br /&gt;- product_reviews_write&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 100, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, 'Overlay Opacity', 'ZEN_COLORBOX_OVERLAY_OPACITY', '0.6', '&lt;br /&gt;Controls the transparency of the overlay.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 0.6&lt;/strong&gt;', @cgi, 101, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''0'', ''0.1'', ''0.2'', ''0.3'', ''0.4'', ''0.5'', ''0.6'', ''0.7'', ''0.8'', ''0.9'', ''1''), '),
+          (NULL, 'Resize Duration', 'ZEN_COLORBOX_RESIZE_DURATION', '400', '&lt;br /&gt;Controls the speed of the image resizing.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 400&lt;/strong&gt;&lt;br /&gt;', @cgi, 102, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Initial Width', 'ZEN_COLORBOX_INITIAL_WIDTH', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its width from this value to the current image width, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 250&lt;/strong&gt;&lt;br /&gt;', @cgi, 103, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Initial Height', 'ZEN_COLORBOX_INITIAL_HEIGHT', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its height from this value to the current image height, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 250&lt;/strong&gt;&lt;br /&gt;', @cgi, 104, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Display Image Counter', 'ZEN_COLORBOX_COUNTER', 'true', '&lt;br /&gt;If true, the image counter will be displayed (below the caption of each image) within the lightbox.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 105, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, 'Close on Overlay Click', 'ZEN_COLORBOX_CLOSE_OVERLAY', 'false', '&lt;br /&gt;If true, the lightbox will close when the overlay is clicked.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: false&lt;/strong&gt;', @cgi, 106, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, 'Loop', 'ZEN_COLORBOX_LOOP', 'true', '&lt;br /&gt;If true, Images will loop in both directions.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 107, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&lt;strong&gt;Slideshow&lt;/strong&gt;', 'ZEN_COLORBOX_SLIDESHOW', 'false', '&lt;br /&gt;If true, Images will display as a slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: false&lt;/strong&gt;', @cgi, 200, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&nbsp; Slideshow Auto Start', 'ZEN_COLORBOX_SLIDESHOW_AUTO', 'true', '&lt;br /&gt;If true, your slideshow will auto start.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 201, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&nbsp; Slideshow Speed', 'ZEN_COLORBOX_SLIDESHOW_SPEED', '2500', '&lt;br /&gt;Sets the speed of the slideshow &lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 2500&lt;/strong&gt;', @cgi, 202, NOW(), NOW(), NULL, NULL),
+          (NULL, '&nbsp; Slideshow Start Text', 'ZEN_COLORBOX_SLIDESHOW_START_TEXT', 'start slideshow', '&lt;br /&gt;Link text to start the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: start slideshow&lt;/strong&gt;', @cgi, 203, NOW(), NOW(), NULL, NULL),
+          (NULL, '&nbsp; Slideshow Stop Text', 'ZEN_COLORBOX_SLIDESHOW_STOP_TEXT', 'stop slideshow', '&lt;br /&gt;Link text to stop the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: stop slideshow&lt;/strong&gt;', @cgi, 204, NOW(), NOW(), NULL, NULL),
+          (NULL, '&lt;strong&gt;Gallery Mode&lt;/strong&gt;', 'ZEN_COLORBOX_GALLERY_MODE', 'true', '&lt;br /&gt;If true, the lightbox will allow additional images to quickly be displayed using previous and next buttons.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 300, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&nbsp; Include Main Image in Gallery', 'ZEN_COLORBOX_GALLERY_MAIN_IMAGE', 'true', '&lt;br /&gt;If true, the main product image will be included in the lightbox gallery.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 301, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&lt;strong&gt;EZ-Pages Support&lt;/strong&gt;', 'ZEN_COLORBOX_EZPAGES', 'true', '&lt;br /&gt;If true, the lightbox effect will be used for linked images on all EZ-Pages.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 400, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&nbsp; File Types', 'ZEN_COLORBOX_FILE_TYPES', 'jpg,png,gif', '&lt;br /&gt;On EZ-Pages, the lightbox effect will be applied to all images with one of the following file types.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: jpg,png,gif&lt;/strong&gt;&lt;br /&gt;', @cgi, 401, NOW(), NOW(), NULL, NULL);</textarea>
           <textarea class='one-point-five' id='install-sql-one-point-five' readonly='readonly'>INSERT INTO `configuration_group` VALUES (NULL, 'Zen Colorbox', 'Configure Zen Colorbox settings', '0', '1');
           UPDATE `configuration_group` SET `sort_order` = LAST_INSERT_ID() WHERE `configuration_group_id` = LAST_INSERT_ID();
           SELECT @cgi := `configuration_group_id` FROM `configuration_group` WHERE `configuration_group_title` = 'Zen Colorbox';
           INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-          (NULL, '&lt;b&gt;Zen Colorbox&lt;/b&gt;', 'ZEN_COLORBOX_STATUS', 'true', '&lt;br /&gt;If true, all product images on the following pages will be displayed within a lightbox:&lt;br /&gt;&lt;br /&gt;- document_general_info&lt;br /&gt;- document_product_info&lt;br /&gt;- page (EZ-Pages)&lt;br /&gt;- product_free_shipping_info&lt;br /&gt;- product_info&lt;br /&gt;- product_music_info&lt;br /&gt;- product_reviews&lt;br /&gt;- product_reviews_info&lt;br /&gt;- product_reviews_write&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 100, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, 'Overlay Opacity', 'ZEN_COLORBOX_OVERLAY_OPACITY', '0.6', '&lt;br /&gt;Controls the transparency of the overlay.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 0.6&lt;/b&gt;', @cgi, 101, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''0'', ''0.1'', ''0.2'', ''0.3'', ''0.4'', ''0.5'', ''0.6'', ''0.7'', ''0.8'', ''0.9'', ''1''), '),
-          (NULL, 'Resize Duration', 'ZEN_COLORBOX_RESIZE_DURATION', '400', '&lt;br /&gt;Controls the speed of the image resizing.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 400&lt;/b&gt;&lt;br /&gt;', @cgi, 102, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Initial Width', 'ZEN_COLORBOX_INITIAL_WIDTH', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its width from this value to the current image width, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 250&lt;/b&gt;&lt;br /&gt;', @cgi, 103, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Initial Height', 'ZEN_COLORBOX_INITIAL_HEIGHT', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its height from this value to the current image height, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 250&lt;/b&gt;&lt;br /&gt;', @cgi, 104, NOW(), NOW(), NULL, NULL),
-          (NULL, 'Display Image Counter', 'ZEN_COLORBOX_COUNTER', 'true', '&lt;br /&gt;If true, the image counter will be displayed (below the caption of each image) within the lightbox.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 105, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, 'Close on Overlay Click', 'ZEN_COLORBOX_CLOSE_OVERLAY', 'false', '&lt;br /&gt;If true, the lightbox will close when the overlay is clicked.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: false&lt;/b&gt;', @cgi, 106, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, 'Loop', 'ZEN_COLORBOX_LOOP', 'true', '&lt;br /&gt;If true, Images will loop in both directions.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 107, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&lt;b&gt;Slideshow&lt;/b&gt;', 'ZEN_COLORBOX_SLIDESHOW', 'false', '&lt;br /&gt;If true, Images will display as a slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: false&lt;/b&gt;', @cgi, 200, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&nbsp; Slideshow Auto Start', 'ZEN_COLORBOX_SLIDESHOW_AUTO', 'true', '&lt;br /&gt;If true, your slideshow will auto start.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 201, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
-          (NULL, '&nbsp; Slideshow Speed', 'ZEN_COLORBOX_SLIDESHOW_SPEED', '2500', '&lt;br /&gt;Sets the speed of the slideshow &lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: 2500&lt;/b&gt;', @cgi, 202, NOW(), NOW(), NULL, NULL),
-          (NULL, '&nbsp; Slideshow Start Text', 'ZEN_COLORBOX_SLIDESHOW_START_TEXT', 'start slideshow', '&lt;br /&gt;Link text to start the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: start slideshow&lt;/b&gt;', @cgi, 203, NOW(), NOW(), NULL, NULL),
-          (NULL, '&nbsp; Slideshow Stop Text', 'ZEN_COLORBOX_SLIDESHOW_STOP_TEXT', 'stop slideshow', '&lt;br /&gt;Link text to stop the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: stop slideshow&lt;/b&gt;', @cgi, 204, NOW(), NOW(), NULL, NULL),
-          (NULL, '&lt;b&gt;Gallery Mode&lt;/b&gt;', 'ZEN_COLORBOX_GALLERY_MODE', 'true', '&lt;br /&gt;If true, the lightbox will allow additional images to quickly be displayed using previous and next buttons.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 300, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&nbsp; Include Main Image in Gallery', 'ZEN_COLORBOX_GALLERY_MAIN_IMAGE', 'true', '&lt;br /&gt;If true, the main product image will be included in the lightbox gallery.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 301, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&lt;b&gt;EZ-Pages Support&lt;/b&gt;', 'ZEN_COLORBOX_EZPAGES', 'true', '&lt;br /&gt;If true, the lightbox effect will be used for linked images on all EZ-Pages.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: true&lt;/b&gt;', @cgi, 400, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
-          (NULL, '&nbsp; File Types', 'ZEN_COLORBOX_FILE_TYPES', 'jpg,png,gif', '&lt;br /&gt;On EZ-Pages, the lightbox effect will be applied to all images with one of the following file types.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: jpg,png,gif&lt;/b&gt;&lt;br /&gt;', @cgi, 401, NOW(), NOW(), NULL, NULL);
+          (NULL, '&lt;strong&gt;Zen Colorbox&lt;/strong&gt;', 'ZEN_COLORBOX_STATUS', 'true', '&lt;br /&gt;If true, all product images on the following pages will be displayed within a lightbox:&lt;br /&gt;&lt;br /&gt;- document_general_info&lt;br /&gt;- document_product_info&lt;br /&gt;- page (EZ-Pages)&lt;br /&gt;- product_free_shipping_info&lt;br /&gt;- product_info&lt;br /&gt;- product_music_info&lt;br /&gt;- product_reviews&lt;br /&gt;- product_reviews_info&lt;br /&gt;- product_reviews_write&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 100, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, 'Overlay Opacity', 'ZEN_COLORBOX_OVERLAY_OPACITY', '0.6', '&lt;br /&gt;Controls the transparency of the overlay.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 0.6&lt;/strong&gt;', @cgi, 101, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''0'', ''0.1'', ''0.2'', ''0.3'', ''0.4'', ''0.5'', ''0.6'', ''0.7'', ''0.8'', ''0.9'', ''1''), '),
+          (NULL, 'Resize Duration', 'ZEN_COLORBOX_RESIZE_DURATION', '400', '&lt;br /&gt;Controls the speed of the image resizing.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 400&lt;/strong&gt;&lt;br /&gt;', @cgi, 102, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Initial Width', 'ZEN_COLORBOX_INITIAL_WIDTH', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its width from this value to the current image width, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 250&lt;/strong&gt;&lt;br /&gt;', @cgi, 103, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Initial Height', 'ZEN_COLORBOX_INITIAL_HEIGHT', '250', '&lt;br /&gt;If Enable Resize Animations is set to true, the lightbox will resize its height from this value to the current image height, when first displayed.&lt;br /&gt;&lt;br /&gt;Note: This value is measured in pixels.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 250&lt;/strong&gt;&lt;br /&gt;', @cgi, 104, NOW(), NOW(), NULL, NULL),
+          (NULL, 'Display Image Counter', 'ZEN_COLORBOX_COUNTER', 'true', '&lt;br /&gt;If true, the image counter will be displayed (below the caption of each image) within the lightbox.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 105, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, 'Close on Overlay Click', 'ZEN_COLORBOX_CLOSE_OVERLAY', 'false', '&lt;br /&gt;If true, the lightbox will close when the overlay is clicked.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: false&lt;/strong&gt;', @cgi, 106, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, 'Loop', 'ZEN_COLORBOX_LOOP', 'true', '&lt;br /&gt;If true, Images will loop in both directions.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 107, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&lt;strong&gt;Slideshow&lt;/strong&gt;', 'ZEN_COLORBOX_SLIDESHOW', 'false', '&lt;br /&gt;If true, Images will display as a slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: false&lt;/strong&gt;', @cgi, 200, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&nbsp; Slideshow Auto Start', 'ZEN_COLORBOX_SLIDESHOW_AUTO', 'true', '&lt;br /&gt;If true, your slideshow will auto start.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 201, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''), '),
+          (NULL, '&nbsp; Slideshow Speed', 'ZEN_COLORBOX_SLIDESHOW_SPEED', '2500', '&lt;br /&gt;Sets the speed of the slideshow &lt;br /&gt;&lt;br /&gt;Note: This value is measured in milliseconds.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: 2500&lt;/strong&gt;', @cgi, 202, NOW(), NOW(), NULL, NULL),
+          (NULL, '&nbsp; Slideshow Start Text', 'ZEN_COLORBOX_SLIDESHOW_START_TEXT', 'start slideshow', '&lt;br /&gt;Link text to start the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: start slideshow&lt;/strong&gt;', @cgi, 203, NOW(), NOW(), NULL, NULL),
+          (NULL, '&nbsp; Slideshow Stop Text', 'ZEN_COLORBOX_SLIDESHOW_STOP_TEXT', 'stop slideshow', '&lt;br /&gt;Link text to stop the slideshow.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: stop slideshow&lt;/strong&gt;', @cgi, 204, NOW(), NOW(), NULL, NULL),
+          (NULL, '&lt;strong&gt;Gallery Mode&lt;/strong&gt;', 'ZEN_COLORBOX_GALLERY_MODE', 'true', '&lt;br /&gt;If true, the lightbox will allow additional images to quickly be displayed using previous and next buttons.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 300, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&nbsp; Include Main Image in Gallery', 'ZEN_COLORBOX_GALLERY_MAIN_IMAGE', 'true', '&lt;br /&gt;If true, the main product image will be included in the lightbox gallery.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 301, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&lt;strong&gt;EZ-Pages Support&lt;/strong&gt;', 'ZEN_COLORBOX_EZPAGES', 'true', '&lt;br /&gt;If true, the lightbox effect will be used for linked images on all EZ-Pages.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: true&lt;/strong&gt;', @cgi, 400, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(''true'', ''false''),'),
+          (NULL, '&nbsp; File Types', 'ZEN_COLORBOX_FILE_TYPES', 'jpg,png,gif', '&lt;br /&gt;On EZ-Pages, the lightbox effect will be applied to all images with one of the following file types.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: jpg,png,gif&lt;/strong&gt;&lt;br /&gt;', @cgi, 401, NOW(), NOW(), NULL, NULL);
           INSERT INTO `admin_pages` (`page_key` ,`language_key` ,`main_page` ,`page_params` ,`menu_key` ,`display_on_menu` ,`sort_order`)VALUES
           ('configZenColorbox', 'BOX_CONFIGURATION_ZEN_COLORBOX', 'FILENAME_CONFIGURATION', CONCAT('gID=',@cgi), 'configuration', 'Y', @cgi);</textarea>
           <li>
@@ -163,16 +187,16 @@
         </h3>
         <div class='row-fluid uninstall-choose-version'>
           Choose your version:
-          <button class='btn btn-small btn-primary btn-uninstall-one-point-five'><strong>Zen Cart 1.5</strong></button>
-          <button class='btn btn-small btn-primary btn-uninstall-one-point-three'><strong>Zen Cart 1.3.9</strong></button>
+          <button class='btn btn-sm btn-primary btn-uninstall-one-point-five'><strong>Zen Cart 1.5</strong></button>
+          <button class='btn btn-sm btn-primary btn-uninstall-one-point-three'><strong>Zen Cart 1.3.9</strong></button>
         </div>
         <ol class='uninstall-steps'>
           <li class='uninstall-one-point-five'>
-            <a class='btn btn-success btn-mini' id='copy-uninstall-sql-one-point-five'>Press this button</a>
+            <a class='btn btn-success btn-xs' id='copy-uninstall-sql-one-point-five'>Press this button</a>
             to select the uninstall sql.
           </li>
           <li class='uninstall-one-point-three'>
-            <a class='btn btn-success btn-mini' id='copy-uninstall-sql-one-point-three'>Press this button</a>
+            <a class='btn btn-success btn-xs' id='copy-uninstall-sql-one-point-three'>Press this button</a>
             to select the uninstall sql.
           </li>
           <textarea class='uninstall-one-point-five' id='uninstall-sql-one-point-five' readonly='readonly'>DELETE FROM `configuration` WHERE `configuration_key` LIKE 'ZEN_COLORBOX_%';
