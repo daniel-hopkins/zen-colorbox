@@ -30,17 +30,17 @@ $(document).ready(function(){
     });
 
     $('a#copy-install-sql-one-point-five').on('click', function(){
-      $('#install-sql-one-point-five').select()
+      $('#install-sql-one-point-five').addClass('textarea-selected').select()
     });
     $('a#copy-install-sql-one-point-three').on('click', function(){
-      $('#install-sql-one-point-three').select()
+      $('#install-sql-one-point-three').addClass('textarea-selected').select()
     });
 
     $('a#copy-uninstall-sql-one-point-five').on('click', function(){
-      $('#uninstall-sql-one-point-five').select()
+      $('#uninstall-sql-one-point-five').addClass('textarea-selected').select()
     });
     $('a#copy-uninstall-sql-one-point-three').on('click', function(){
-      $('#uninstall-sql-one-point-three').select()
+      $('#uninstall-sql-one-point-three').addClass('textarea-selected').select()
     });
 
     

@@ -38,6 +38,10 @@ textarea {
   font-size: .75em;
   background-color: #ececec; }
 
+.textarea-selected {
+  border: 5px solid #00ac47;
+}
+
 #uninstall {
   padding-top: 10px;
   padding-bottom: 10px; }
