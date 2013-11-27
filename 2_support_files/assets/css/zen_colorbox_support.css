@@ -36,10 +36,16 @@ textarea {
   height: 55px;
   overflow: scroll;
   font-size: .75em;
-  background-color: #ececec; }
+  background-color: #ececec;
+  -webkit-transition: all .5s ease-out;
+     -moz-transition: all .5s ease-out;
+          transition: all .5s ease-out;
+
+}
 
 .textarea-selected {
   border: 5px solid #00ac47;
+  height: 120px;
 }
 
 #uninstall {
