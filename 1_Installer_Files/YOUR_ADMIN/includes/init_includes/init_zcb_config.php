@@ -77,7 +77,7 @@
     $db->Execute($sql);
 	$sql = "INSERT INTO ".TABLE_CONFIGURATION." (configuration_id, configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES (NULL, '&nbsp; File Types', 'ZEN_COLORBOX_FILE_TYPES', 'jpg,png,gif', '<br />On EZ-Pages, the lightbox effect will be applied to all images with one of the following file types.<br /><br /><b>Default: jpg,png,gif</b><br />', '".$zcb_configuration_id."', 401, NULL, now(), NULL, NULL)";
     $db->Execute($sql);
-    $sql = "INSERT INTO ".TABLE_CONFIGURATION." (configuration_id, configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES (NULL, 'Zen Colorbox Version', 'ZEN_COLORBOX_VERSION', '1.0', 'Zen Colorbox Version', '".$zcb_configuration_id."', 402, NULL, now(), NULL, NULL)";
+    $sql = "INSERT INTO ".TABLE_CONFIGURATION." (configuration_id, configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES (NULL, 'Zen Colorbox Version', 'ZEN_COLORBOX_VERSION', '1.0', 'Zen Colorbox Version', '".$zcb_configuration_id."', 0, NULL, now(), NULL, 'zen_cfg_select_option(array(''1.0''),')";
     $db->Execute($sql);
 
    if(file_exists(DIR_FS_ADMIN . DIR_WS_INCLUDES . 'auto_loaders/config.zcb.php'))
