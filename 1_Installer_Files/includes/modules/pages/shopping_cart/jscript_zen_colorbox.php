@@ -6,7 +6,7 @@
  * @copyright Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: jscript_zen_colorbox.php 2012-04-30 niestudio $
+ * @version $Id: jscript_zen_colorbox.php 2014-06-21 niestudio $
  */
 
 if (ZEN_COLORBOX_STATUS == 'true') {
