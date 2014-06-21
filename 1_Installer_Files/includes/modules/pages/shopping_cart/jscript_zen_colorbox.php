@@ -10,11 +10,12 @@
  */
 
 if (ZEN_COLORBOX_STATUS == 'true') {
-	require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/jquery_colorbox.php');
+  require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/jquery_colorbox.php');
 ?>
 
 jQuery(function($) {
-  $('.forward').find('a').attr({
+  //select the help link based on the original js function name
+  $('a[href*="session_win"]').attr({
     'href':'#'
   }).colorbox({
     'href':'<?php echo zen_href_link(FILENAME_INFO_SHOPPING_CART); ?>',
