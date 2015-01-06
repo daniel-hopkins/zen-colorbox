@@ -88,17 +88,20 @@
 	};
     }
 
-       $messageStack->add('Zen Colorbox v1.3 install completed!','success');
+$messageStack->add('Zen Colorbox v1.3 install completed!','success');
 
-    // find next sort order in admin_pages table
-    $sql = "SELECT (MAX(sort_order)+2) as sort FROM ".TABLE_ADMIN_PAGES;
-    $result = $db->Execute($sql);
-    $admin_page_sort = $result->fields['sort'];
-
-    // now register the admin pages
-    // Admin Menu for Zen Colorbox Configuration Menu
-    zen_deregister_admin_pages('configZenColorbox');
-    zen_register_admin_page('configZenColorbox',
-        'BOX_CONFIGURATION_ZEN_COLORBOX', 'FILENAME_CONFIGURATION',
-        'gID=' . $zcb_configuration_id, 'configuration', 'Y',
-        $admin_page_sort);
+  $zcb_zc_versionck = (PROJECT_VERSION_MAJOR > 1 || (PROJECT_VERSION_MAJOR == 1 && substr(PROJECT_VERSION_MINOR, 0, 3) >= 5));
+  if ($zcb_zc_versionck) { // BOF - Continue Zen Cart 1.5.0 install ?
+	  if (!zen_page_key_exists('configZenColorbox')) { // BOF - First check is there an existing admin page registered?
+		  if ((int) $zcb_configuration_id > 0) { // BOF - Second check is the configuration_id greater than 0?
+				// Now register Admin Menu for Zen Colorbox Configuration Menu
+				zen_register_admin_page('configZenColorbox',
+				'BOX_CONFIGURATION_ZEN_COLORBOX', 'FILENAME_CONFIGURATION',
+				'gID=' . $zcb_configuration_id, 'configuration', 'Y',
+				$admin_page_sort);
+		  }
+		  // EOF - Second check is the configuration_id greater than 0?
+	  }
+	  // EOF - First check is there an existing admin page registered?
+  }
+  // EOF - Continue Zen Cart 1.5.0 install?
