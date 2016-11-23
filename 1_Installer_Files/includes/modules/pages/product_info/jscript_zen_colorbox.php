@@ -17,16 +17,18 @@ if (ZEN_COLORBOX_STATUS == 'true') {
   jQuery(function($) {
   // Quantity Discounts Available
   var discountPriceLink = $('a[href*="popupWindowPrice"]');
-  var discountPriceUrl = discountPriceLink.attr('href').match(/'(.*?)'/)[1];
-  discountPriceLink.attr({
-    'href':'#'
-  }).colorbox({
-    'href':discountPriceUrl,
-    width: '550px',
-    onComplete: function(){
-      $('#cboxLoadedContent').find('a[href*="window.close"]').closest('td').hide();
-    }
-  });
+  if (discountPriceLink.length != 0) {
+    var discountPriceUrl = discountPriceLink.attr('href').match(/'(.*?)'/)[1];
+    discountPriceLink.attr({
+      'href':'#'
+    }).colorbox({
+      'href':discountPriceUrl,
+      width: '550px',
+      onComplete: function(){
+        $('#cboxLoadedContent').find('a[href*="window.close"]').closest('td').hide();
+      }
+    });
+  }
 });
 
 </script>
