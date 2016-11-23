@@ -87,7 +87,7 @@ if ($num_images) {
 		list($src, $alt, $width, $height, $parameters) = $newimg;
 		$products_image_large = zen_output_string($src);
 	} 
-	$flag_has_large = file_exists($products_image_large);
+    $flag_has_large = file_exists($products_image_large);
 //  End Image Handler changes 1 of 2
     $products_image_large = ($flag_has_large ? $products_image_large : $products_image_directory . $file);
     $flag_display_large = (IMAGE_ADDITIONAL_DISPLAY_LINK_EVEN_WHEN_NO_LARGE == 'Yes' || $flag_has_large);
@@ -105,7 +105,7 @@ if ($num_images) {
     if(function_exists('zen_colorbox')){
       include 'zen_colorbox.php';
     } else {
-      $script_link = '<script language="javascript" type="text/javascript"><!--' . "\n" . 'document.write(\'' . ($flag_display_large ? '<a href="javascript:popupWindow(\\\'' . str_replace($products_image_large, urlencode(addslashes($products_image_large)), $large_link) . '\\\')">' . $thumb_slashes . '<br />' . TEXT_CLICK_TO_ENLARGE . '</a>' : $thumb_slashes) . '\');' . "\n" . '//--></script>';
+    $script_link = '<script language="javascript" type="text/javascript"><!--' . "\n" . 'document.write(\'' . ($flag_display_large ? '<a href="javascript:popupWindow(\\\'' . str_replace($products_image_large, urlencode(addslashes($products_image_large)), $large_link) . '\\\')">' . $thumb_slashes . '<br />' . TEXT_CLICK_TO_ENLARGE . '</a>' : $thumb_slashes) . '\');' . "\n" . '//--></script>';
     }
     // eof Zen Colorbox 2012-04-30 niestudio
 
@@ -118,7 +118,7 @@ if ($num_images) {
 
     // List Box array generation:
     $list_box_contents[$row][$col] = array('params' => 'class="additionalImages centeredContent back"' . ' ' . 'style="width:' . $col_width . '%;"',
-    'text' => "\n      " . $link);
+                                           'text' => "\n      " . $link);
     $col ++;
     if ($col > (IMAGES_AUTO_ADDED -1)) {
       $col = 0;
